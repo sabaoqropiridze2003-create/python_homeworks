@@ -15,7 +15,7 @@
 # მესამე ამოცანა
 
 sentence = input("enter two words: ")
-word_one = sentence.split()[0]
-word_two = sentence.split()[1]
+word_one = sentence.split()[0].lower()
+word_two = sentence.split()[1].lower()
 
 print(word_one[::-1] == word_two)
