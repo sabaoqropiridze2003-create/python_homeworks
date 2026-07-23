@@ -18,7 +18,7 @@ async def run_task(name, duration):
 
 
 async def run_sequential():
-    print("--- Sequential Mode ---")
+    print("--- Sequential---")
     start_time = time.perf_counter()
 
     for name, duration in tasks:
@@ -29,7 +29,7 @@ async def run_sequential():
 
 
 async def run_concurrent():
-    print("--- Concurrent Mode ---")
+    print("--- Concurrent---")
     start_time = time.perf_counter()
 
     task_coroutines = [run_task(name, duration) for name, duration in tasks]
