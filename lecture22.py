@@ -1,11 +1,13 @@
+import os
 import time
 import threading
+import multiprocessing
 
 
-# def page_load(url):
-#     print(f"[Page Load Started] {url}")
-#     time.sleep(2)
-#     print(f"[page loaded] {url}")
+def page_load(url):
+    print(f"[Page Load Started] {url}")
+    time.sleep(2)
+    print(f"[page loaded] {url}")
 
 
 # start = time.time()
@@ -170,36 +172,87 @@ import threading
 # print(f"{end - start:.2f} seconds for threads")
 
 
-import multiprocessing
+# def heavy_task(n):
+#     total = 0
+#     for i in range(n):
+#         total += 1 * 1
 
 
-def heavy_task(n):
-    total = 0
-    for i in range(n):
-        total += 1 * 1
+# big_n = 60_000_000
 
 
-big_n = 60_000_000
+# if __name__ == '__main__':
+#     start = time.time()
+
+#     heavy_task(big_n)
+#     heavy_task(big_n)
+
+#     end = time.time()
+#     print(f"{end - start:.2f} seconds for tanmimdevruli")
+
+#     start = time.time()
+
+#     p1 = multiprocessing.Process(target=heavy_task, args=(big_n,))
+#     p2 = multiprocessing.Process(target=heavy_task, args=(big_n,))
+
+#     p1.start()
+#     p2.start()
+#     p1.join()
+#     p2.join()
+
+#     end = time.time()
+#     print(f"{end - start:.2f} seconds for multiprocesing")
 
 
-if __name__ == '__main__':
+# def producer(queue, items):
+
+#     for item in items:
+#         print(f"[Producer] adding {item}")
+#         queue.put(item)
+#         time.sleep(0.5)
+#     queue.put(None)
+
+
+# def consumer(queue):
+
+#     while True:
+#         item = queue.get()
+#         if item is None:
+#             print("[consumer] ended")
+#             break
+#         print(f"[consumer] procesing {item}")
+#         time.sleep(1)
+
+
+# if __name__ == "__main__":
+#     queue = multiprocessing.Queue()
+#     items = ["file1", "file2", "file3", "file4"]
+
+#     p1 = multiprocessing.Process(target=producer, args=(queue, items))
+#     p2 = multiprocessing.Process(target=consumer, args=(queue,))
+
+#     p1.start()
+#     p2.start()
+#     p1.join()
+#     p2.join()
+
+
+def process_file(filename):
+    pid = os.getpid()
+    print(f"[PID {pid}] procesing {filename}")
+
+    total = sum(i * i for i in range(5_000_000))
+
+    print(f"[PID {pid}] ended {filename}")
+
+
+if __name__ == "__main__":
+
+    files = ["file_1", "file_2", "file_3", "file_4", "file_5"]
+
     start = time.time()
-
-    heavy_task(big_n)
-    heavy_task(big_n)
+    with multiprocessing.Pool(processes=3) as pool:
+        pool.results = pool.map(process_file, files)
 
     end = time.time()
-    print(f"{end - start:.2f} seconds for tanmimdevruli")
-
-    start = time.time()
-
-    p1 = multiprocessing.Process(target=heavy_task, args=(big_n,))
-    p2 = multiprocessing.Process(target=heavy_task, args=(big_n,))
-
-    p1.start()
-    p2.start()
-    p1.join()
-    p2.join()
-
-    end = time.time()
-    print(f"{end - start:.2f} seconds for tanmimdevruli")
+    print(f"end time is {end - start:.2f}")
