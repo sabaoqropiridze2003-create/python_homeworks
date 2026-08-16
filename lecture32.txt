@@ -1,0 +1,39 @@
+-- CREATE TABLE students (
+-- 	student_id SERIAL PRIMARY KEY,
+-- 	first_name VARCHAR(50) NOT NULL,
+-- 	LAST_NAME VARCHAR(50) NOT NULL,
+-- 	age INT NOT NULL,
+-- 	email VARCHAR(50) NOT NULL UNIQUE,
+-- 	status BOOLEAN DEFAULT TRUE,
+-- 	pay NUMERIC(6, 2) DEFAULT 1000 CHECK(pay > 0),
+-- 	bio TEXT,
+-- 	created_at DATE DEFAULT CURRENT_DATE
+-- );
+
+-- SELECT * FROM students;
+
+-- INSERT INTO students
+-- 	(first_name, last_name, age, email)
+-- VALUES
+-- 	('nika', 'okropiridze', '20', 'nm@gmail.com')
+
+-- INSERT INTO students
+-- 	(first_name, last_name, age, email, bio)
+-- VALUES 
+-- 	('Nikoloz', 'Tchighladze', 22, 'nc@gmail.com', 'Hello, I am nikoloz'), 
+-- 	('Saba', 'okropiridze', 25, 'saok@gmail.com', 'Hello, I am saba'),
+-- 	('Saba', 'Ananidze', 28, 'saan@gmail.com', 'Hello, I am saba');
+
+-- SELECT * FROM students ORDER BY age;
+-- SELECT * FROM students ORDER BY age DESC;
+-- SELECT * FROM students ORDER BY first_name DESC, last_name;
+-- SELECT * FROM students ORDER BY first_name LIMIT 2;
+-- SELECT * FROM students ORDER BY first_name DESC LIMIT 2;
+-- SELECT * FROM students ORDER BY first_name LIMIT 2 OFFSET 1;
+-- SELECT first_name AS saxeli, last_name AS gvari FROM students ORDER BY first_name;
+
+SELECT * FROM students WHERE first_name = 'nika';
+SELECT * FROM students WHERE first_name = 'nika' OR first_name = 'Saba';
+SELECT * FROM students WHERE first_name = 'Saba' AND last_name = 'okropiridze';
+
+
