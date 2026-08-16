@@ -1,0 +1,93 @@
+-- CREATE TABLE IF NOT EXISTS people (
+-- 	id SERIAL PRIMARY KEY,
+-- 	first_name VARCHAR(50),
+-- 	last_name VARCHAR(100),
+-- 	age INT,
+-- 	job VARCHAR(255),
+-- 	employeed BOOL
+-- );
+
+-- SELECT * FROM people
+
+-- INSERT INTO people 
+-- VALUES
+-- 	(DEFAULT, 'Saba', 'Sabashvili',21, 'Programer', true),
+-- 	(DEFAULT, 'Giorgi', 'Giorgadze',22, 'Tester', false);
+
+-- INSERT INTO people 
+-- 	(first_name, last_name, age, job, employeed)
+-- VALUES
+-- 	('Nino', 'Ninoshvili', 34, 'Architect', true),
+-- 	('Lasha', 'Lashadze', 24, 'Programer', false),
+-- 	('Mariam', 'Mariamidze', 31, 'Musician', true);
+
+-- SELECT first_name FROM people WHERE age <= 25;
+-- SELECT first_name, last_name FROM people WHERE age <= 25;
+-- SELECT age, last_name FROm people WHERE first_name LIKE 'S%';
+-- SELECT first_name FROM people WHERE age BETWEEN 19 AND 30;
+-- SELECT id FROm people WHERE age > 19 AND first_name LIKE 'Gi%';
+-- SELECT DISTINCT job FROM people WHERE age BETWEEN 20 AND 30;
+-- SELECT first_name FROm people WHERE job IN ('Programer', 'Tester');
+-- UPDATE people set job = 'Designer' WHERE job = 'Musician';
+-- SELECT job, COUNT(*) FROM people GROUP BY job;
+-- SELECT job, AVG(age) FROM people GROUP BY job;
+-- SELECT job, MAX(age) FROM people GROUP BY job;
+-- SELECT job, SUM(age) FROM people GROUP BY job;
+
+-- INSERT INTO people 
+-- 	(first_name, last_name, age, job, employeed)
+-- VALUES 
+-- 	('Giorgi', 'Beridze', 24, 'Backend Dev', true),
+--     ('Nino', 'Kapanadze', 29, 'UI/UX Designer', true),
+--     ('Tornike', 'Mevludishvili', 18, 'Student', false),
+--     ('Ana', 'Dolidze', 35, 'Project Manager', true),
+--     ('Eka', 'Shengelia', 22, 'QA Tester', false),
+--     ('Mariam', 'Gvaramia', 41, 'Data Analyst', true),
+--     ('Luka', 'Tsiklauri', 19, 'Student', false),
+--     ('David', 'Kharshiladze', 31, 'DevOps Engineer', true),
+--     ('Salome', 'Japaridze', 27, 'Frontend Dev', true),
+--     ('Alexandre', 'Natsvlishvili', 20, 'Student', false);
+
+-- ALTER TABLE people ADD COLUMN height DECIMAL(10, 2);
+-- ALTER TABLE people DROP COLUMN employeed;
+-- SELECT * FROM people
+
+-- CREATE TABLE things (
+-- 	id SERIAL PRIMARY KEY,
+-- 	inventory_number VARCHAR(255) UNIQUE,
+-- 	thing_name VARCHAR(255) NOT NULL,
+-- 	description VARCHAR(255),
+-- 	price DECIMAL(10,2) CHECK (price > 0),
+-- 	item_owner INT,
+-- 	CONSTRAINT fk_item_owner FOREIGN KEY (item_owner) REFERENCES people(id)
+-- );
+
+-- INSERT INTO things 
+-- 	(inventory_number, thing_name, price, item_owner)
+-- VALUES
+--     ('A1FB6911HS', 'Laptop', 1200.00, 1),
+--     ('B2KC7822XT', 'Desk Monitor 27 inch', 350.50, 1),
+--     ('C3MD8933PL', 'Ergonomic Chair', 280.00, 2),
+--     ('D4NE9044QK', 'Mechanical Keyboard', 115.00, 3),
+--     ('E5OF0155RJ', 'Wireless Mouse', 45.99, 2),
+--     ('F6PG1266SM', 'Standing Desk', 650.00, 4),
+--     ('G7QH2377TN', 'Noise Canceling Headphones', 220.00, 6),
+--     ('H8RI3488UO', 'USB-C Docking Station', 180.00, 5),
+--     ('I9SJ4599VP', 'HD Webcam', 85.50, 3),
+--     ('J0TK5600WQ', 'External SSD 1TB', 130.00, 4);
+	
+
+-- SELECT * FROM things;
+-- SELECT * FROM people, things WHERE people.id = things.item_owner;
+-- SELECT * FROM people JOIN things ON people.id = things.item_owner;
+-- SELECT * FROM people JOIN things ON people.id = things.item_owner WHERE price > 500;
+-- SELECT * FROM people LEFT JOIN things ON people.id = things.item_owner;
+-- SELECT * FROM people FULL JOIN things ON people.id = things.item_owner;
+
+
+
+
+
+
+
+
